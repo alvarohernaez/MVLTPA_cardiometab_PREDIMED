@@ -371,6 +371,23 @@ age_counts <- dat_long %>%
   )
 write.table(age_counts,file="./Outputs2/bmi/Descriptive/non_NA_values_age.csv",sep=";",col.names=NA)
 
+load("./Data/LTPA_PREDIMED2.RData")
+dat<-dat[dat$bmi_ok==1,]
+pyears <- dat %>%
+  dplyr::mutate(
+    fu_years = round(as.numeric(difftime(f_ultcontact_bmi, seg00, units = "days")) / 365.25,1),
+    cohorte = dplyr::case_when(nodo==1~"Malaga",nodo==2~"Sevilla",nodo==4~"Mallorca",
+                               nodo==5~"Clinic",nodo==6~"IMIM",nodo==7~"Reus",nodo==10~"Navarra",
+                               nodo==11~"Vitoria",nodo==13~"Canarias",nodo==14~"Bellvitge",
+                               TRUE ~ paste0("Nodo_", nodo))) %>%
+  dplyr::group_by(cohorte) %>%
+  dplyr::summarise(
+    person_years = sum(fu_years, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(person_years))
+write.table(pyears,file="./Outputs2/bmi/Descriptive/person_years.csv",sep=";",col.names=NA)
+
 
 # wc
 
@@ -428,6 +445,23 @@ age_counts <- dat_long %>%
     .groups = "drop"
   )
 write.table(age_counts,file="./Outputs2/wc/Descriptive/non_NA_values_age.csv",sep=";",col.names=NA)
+
+load("./Data/LTPA_PREDIMED2.RData")
+dat<-dat[dat$wc_ok==1,]
+pyears <- dat %>%
+  dplyr::mutate(
+    fu_years = round(as.numeric(difftime(f_ultcontact_wc, seg00, units = "days")) / 365.25,1),
+    cohorte = dplyr::case_when(nodo==1~"Malaga",nodo==2~"Sevilla",nodo==4~"Mallorca",
+                               nodo==5~"Clinic",nodo==6~"IMIM",nodo==7~"Reus",nodo==10~"Navarra",
+                               nodo==11~"Vitoria",nodo==13~"Canarias",nodo==14~"Bellvitge",
+                               TRUE ~ paste0("Nodo_", nodo))) %>%
+  dplyr::group_by(cohorte) %>%
+  dplyr::summarise(
+    person_years = sum(fu_years, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(person_years))
+write.table(pyears,file="./Outputs2/wc/Descriptive/person_years.csv",sep=";",col.names=NA)
 
 
 # whtr
@@ -487,6 +521,23 @@ age_counts <- dat_long %>%
   )
 write.table(age_counts,file="./Outputs2/whtr/Descriptive/non_NA_values_age.csv",sep=";",col.names=NA)
 
+load("./Data/LTPA_PREDIMED2.RData")
+dat<-dat[dat$wc_ok==1,]
+pyears <- dat %>%
+  dplyr::mutate(
+    fu_years = round(as.numeric(difftime(f_ultcontact_wc, seg00, units = "days")) / 365.25,1),
+    cohorte = dplyr::case_when(nodo==1~"Malaga",nodo==2~"Sevilla",nodo==4~"Mallorca",
+                               nodo==5~"Clinic",nodo==6~"IMIM",nodo==7~"Reus",nodo==10~"Navarra",
+                               nodo==11~"Vitoria",nodo==13~"Canarias",nodo==14~"Bellvitge",
+                               TRUE ~ paste0("Nodo_", nodo))) %>%
+  dplyr::group_by(cohorte) %>%
+  dplyr::summarise(
+    person_years = sum(fu_years, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(person_years))
+write.table(pyears,file="./Outputs2/whtr/Descriptive/person_years.csv",sep=";",col.names=NA)
+
 
 # sbp
 
@@ -544,6 +595,23 @@ age_counts <- dat_long %>%
     .groups = "drop"
   )
 write.table(age_counts,file="./Outputs2/sbp/Descriptive/non_NA_values_age.csv",sep=";",col.names=NA)
+
+load("./Data/LTPA_PREDIMED2.RData")
+dat<-dat[dat$sbp_ok==1,]
+pyears <- dat %>%
+  dplyr::mutate(
+    fu_years = round(as.numeric(difftime(f_ultcontact_sbp, seg00, units = "days")) / 365.25,1),
+    cohorte = dplyr::case_when(nodo==1~"Malaga",nodo==2~"Sevilla",nodo==4~"Mallorca",
+                               nodo==5~"Clinic",nodo==6~"IMIM",nodo==7~"Reus",nodo==10~"Navarra",
+                               nodo==11~"Vitoria",nodo==13~"Canarias",nodo==14~"Bellvitge",
+                               TRUE ~ paste0("Nodo_", nodo))) %>%
+  dplyr::group_by(cohorte) %>%
+  dplyr::summarise(
+    person_years = sum(fu_years, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(person_years))
+write.table(pyears,file="./Outputs2/sbp/Descriptive/person_years.csv",sep=";",col.names=NA)
 
 
 # dbp
@@ -603,6 +671,23 @@ age_counts <- dat_long %>%
   )
 write.table(age_counts,file="./Outputs2/dbp/Descriptive/non_NA_values_age.csv",sep=";",col.names=NA)
 
+load("./Data/LTPA_PREDIMED2.RData")
+dat<-dat[dat$dbp_ok==1,]
+pyears <- dat %>%
+  dplyr::mutate(
+    fu_years = round(as.numeric(difftime(f_ultcontact_dbp, seg00, units = "days")) / 365.25,1),
+    cohorte = dplyr::case_when(nodo==1~"Malaga",nodo==2~"Sevilla",nodo==4~"Mallorca",
+                               nodo==5~"Clinic",nodo==6~"IMIM",nodo==7~"Reus",nodo==10~"Navarra",
+                               nodo==11~"Vitoria",nodo==13~"Canarias",nodo==14~"Bellvitge",
+                               TRUE ~ paste0("Nodo_", nodo))) %>%
+  dplyr::group_by(cohorte) %>%
+  dplyr::summarise(
+    person_years = sum(fu_years, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(person_years))
+write.table(pyears,file="./Outputs2/dbp/Descriptive/person_years.csv",sep=";",col.names=NA)
+
 
 # tc
 
@@ -660,6 +745,23 @@ age_counts <- dat_long %>%
     .groups = "drop"
   )
 write.table(age_counts,file="./Outputs2/tc/Descriptive/non_NA_values_age.csv",sep=";",col.names=NA)
+
+load("./Data/LTPA_PREDIMED2.RData")
+dat<-dat[dat$lipids_ok==1,]
+pyears <- dat %>%
+  dplyr::mutate(
+    fu_years = round(as.numeric(difftime(f_ultcontact_lipids, seg00, units = "days")) / 365.25,1),
+    cohorte = dplyr::case_when(nodo==1~"Malaga",nodo==2~"Sevilla",nodo==4~"Mallorca",
+                               nodo==5~"Clinic",nodo==6~"IMIM",nodo==7~"Reus",nodo==10~"Navarra",
+                               nodo==11~"Vitoria",nodo==13~"Canarias",nodo==14~"Bellvitge",
+                               TRUE ~ paste0("Nodo_", nodo))) %>%
+  dplyr::group_by(cohorte) %>%
+  dplyr::summarise(
+    person_years = sum(fu_years, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(person_years))
+write.table(pyears,file="./Outputs2/tc/Descriptive/person_years.csv",sep=";",col.names=NA)
 
 
 # hdlc
@@ -719,6 +821,23 @@ age_counts <- dat_long %>%
   )
 write.table(age_counts,file="./Outputs2/hdlc/Descriptive/non_NA_values_age.csv",sep=";",col.names=NA)
 
+load("./Data/LTPA_PREDIMED2.RData")
+dat<-dat[dat$lipids_ok==1,]
+pyears <- dat %>%
+  dplyr::mutate(
+    fu_years = round(as.numeric(difftime(f_ultcontact_lipids, seg00, units = "days")) / 365.25,1),
+    cohorte = dplyr::case_when(nodo==1~"Malaga",nodo==2~"Sevilla",nodo==4~"Mallorca",
+                               nodo==5~"Clinic",nodo==6~"IMIM",nodo==7~"Reus",nodo==10~"Navarra",
+                               nodo==11~"Vitoria",nodo==13~"Canarias",nodo==14~"Bellvitge",
+                               TRUE ~ paste0("Nodo_", nodo))) %>%
+  dplyr::group_by(cohorte) %>%
+  dplyr::summarise(
+    person_years = sum(fu_years, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(person_years))
+write.table(pyears,file="./Outputs2/hdlc/Descriptive/person_years.csv",sep=";",col.names=NA)
+
 
 # ldlc
 
@@ -776,6 +895,23 @@ age_counts <- dat_long %>%
     .groups = "drop"
   )
 write.table(age_counts,file="./Outputs2/ldlc/Descriptive/non_NA_values_age.csv",sep=";",col.names=NA)
+
+load("./Data/LTPA_PREDIMED2.RData")
+dat<-dat[dat$lipids_ok==1,]
+pyears <- dat %>%
+  dplyr::mutate(
+    fu_years = round(as.numeric(difftime(f_ultcontact_lipids, seg00, units = "days")) / 365.25,1),
+    cohorte = dplyr::case_when(nodo==1~"Malaga",nodo==2~"Sevilla",nodo==4~"Mallorca",
+                               nodo==5~"Clinic",nodo==6~"IMIM",nodo==7~"Reus",nodo==10~"Navarra",
+                               nodo==11~"Vitoria",nodo==13~"Canarias",nodo==14~"Bellvitge",
+                               TRUE ~ paste0("Nodo_", nodo))) %>%
+  dplyr::group_by(cohorte) %>%
+  dplyr::summarise(
+    person_years = sum(fu_years, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(person_years))
+write.table(pyears,file="./Outputs2/ldlc/Descriptive/person_years.csv",sep=";",col.names=NA)
 
 
 # ldlc_hdlc
@@ -835,6 +971,23 @@ age_counts <- dat_long %>%
   )
 write.table(age_counts,file="./Outputs2/ldlc_hdlc/Descriptive/non_NA_values_age.csv",sep=";",col.names=NA)
 
+load("./Data/LTPA_PREDIMED2.RData")
+dat<-dat[dat$lipids_ok==1,]
+pyears <- dat %>%
+  dplyr::mutate(
+    fu_years = round(as.numeric(difftime(f_ultcontact_lipids, seg00, units = "days")) / 365.25,1),
+    cohorte = dplyr::case_when(nodo==1~"Malaga",nodo==2~"Sevilla",nodo==4~"Mallorca",
+                               nodo==5~"Clinic",nodo==6~"IMIM",nodo==7~"Reus",nodo==10~"Navarra",
+                               nodo==11~"Vitoria",nodo==13~"Canarias",nodo==14~"Bellvitge",
+                               TRUE ~ paste0("Nodo_", nodo))) %>%
+  dplyr::group_by(cohorte) %>%
+  dplyr::summarise(
+    person_years = sum(fu_years, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(person_years))
+write.table(pyears,file="./Outputs2/ldlc_hdlc/Descriptive/person_years.csv",sep=";",col.names=NA)
+
 
 # tg
 
@@ -892,6 +1045,23 @@ age_counts <- dat_long %>%
     .groups = "drop"
   )
 write.table(age_counts,file="./Outputs2/tg/Descriptive/non_NA_values_age.csv",sep=";",col.names=NA)
+
+load("./Data/LTPA_PREDIMED2.RData")
+dat<-dat[dat$lipids_ok==1,]
+pyears <- dat %>%
+  dplyr::mutate(
+    fu_years = round(as.numeric(difftime(f_ultcontact_lipids, seg00, units = "days")) / 365.25,1),
+    cohorte = dplyr::case_when(nodo==1~"Malaga",nodo==2~"Sevilla",nodo==4~"Mallorca",
+                               nodo==5~"Clinic",nodo==6~"IMIM",nodo==7~"Reus",nodo==10~"Navarra",
+                               nodo==11~"Vitoria",nodo==13~"Canarias",nodo==14~"Bellvitge",
+                               TRUE ~ paste0("Nodo_", nodo))) %>%
+  dplyr::group_by(cohorte) %>%
+  dplyr::summarise(
+    person_years = sum(fu_years, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(person_years))
+write.table(pyears,file="./Outputs2/tg/Descriptive/person_years.csv",sep=";",col.names=NA)
 
 
 # gluco
@@ -951,6 +1121,23 @@ age_counts <- dat_long %>%
   )
 write.table(age_counts,file="./Outputs2/gluco/Descriptive/non_NA_values_age.csv",sep=";",col.names=NA)
 
+load("./Data/LTPA_PREDIMED2.RData")
+dat<-dat[dat$gluco_ok==1,]
+pyears <- dat %>%
+  dplyr::mutate(
+    fu_years = round(as.numeric(difftime(f_ultcontact_gluco, seg00, units = "days")) / 365.25,1),
+    cohorte = dplyr::case_when(nodo==1~"Malaga",nodo==2~"Sevilla",nodo==4~"Mallorca",
+                               nodo==5~"Clinic",nodo==6~"IMIM",nodo==7~"Reus",nodo==10~"Navarra",
+                               nodo==11~"Vitoria",nodo==13~"Canarias",nodo==14~"Bellvitge",
+                               TRUE ~ paste0("Nodo_", nodo))) %>%
+  dplyr::group_by(cohorte) %>%
+  dplyr::summarise(
+    person_years = sum(fu_years, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(person_years))
+write.table(pyears,file="./Outputs2/gluco/Descriptive/person_years.csv",sep=";",col.names=NA)
+
 
 # hb1ac
 
@@ -1009,6 +1196,22 @@ age_counts <- dat_long %>%
   )
 write.table(age_counts,file="./Outputs2/hb1ac/Descriptive/non_NA_values_age.csv",sep=";",col.names=NA)
 
+load("./Data/LTPA_PREDIMED2.RData")
+dat<-dat[dat$hb1ac_ok==1,]
+pyears <- dat %>%
+  dplyr::mutate(
+    fu_years = round(as.numeric(difftime(f_ultcontact_hb1ac, seg00, units = "days")) / 365.25,1),
+    cohorte = dplyr::case_when(nodo==1~"Malaga",nodo==2~"Sevilla",nodo==4~"Mallorca",
+                               nodo==5~"Clinic",nodo==6~"IMIM",nodo==7~"Reus",nodo==10~"Navarra",
+                               nodo==11~"Vitoria",nodo==13~"Canarias",nodo==14~"Bellvitge",
+                               TRUE ~ paste0("Nodo_", nodo))) %>%
+  dplyr::group_by(cohorte) %>%
+  dplyr::summarise(
+    person_years = sum(fu_years, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(person_years))
+write.table(pyears,file="./Outputs2/hb1ac/Descriptive/person_years.csv",sep=";",col.names=NA)
 
 # egfr
 
@@ -1066,6 +1269,23 @@ age_counts <- dat_long %>%
     .groups = "drop"
   )
 write.table(age_counts,file="./Outputs2/egfr/Descriptive/non_NA_values_age.csv",sep=";",col.names=NA)
+
+load("./Data/LTPA_PREDIMED2.RData")
+dat<-dat[dat$egfr_ok==1,]
+pyears <- dat %>%
+  dplyr::mutate(
+    fu_years = round(as.numeric(difftime(f_ultcontact_egfr, seg00, units = "days")) / 365.25,1),
+    cohorte = dplyr::case_when(nodo==1~"Malaga",nodo==2~"Sevilla",nodo==4~"Mallorca",
+                               nodo==5~"Clinic",nodo==6~"IMIM",nodo==7~"Reus",nodo==10~"Navarra",
+                               nodo==11~"Vitoria",nodo==13~"Canarias",nodo==14~"Bellvitge",
+                               TRUE ~ paste0("Nodo_", nodo))) %>%
+  dplyr::group_by(cohorte) %>%
+  dplyr::summarise(
+    person_years = sum(fu_years, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(person_years))
+write.table(pyears,file="./Outputs2/egfr/Descriptive/person_years.csv",sep=";",col.names=NA)
 
 
 # nlr
@@ -1125,6 +1345,23 @@ age_counts <- dat_long %>%
   )
 write.table(age_counts,file="./Outputs2/nlr/Descriptive/non_NA_values_age.csv",sep=";",col.names=NA)
 
+load("./Data/LTPA_PREDIMED2.RData")
+dat<-dat[dat$nlr_ok==1,]
+pyears <- dat %>%
+  dplyr::mutate(
+    fu_years = round(as.numeric(difftime(f_ultcontact_nlr, seg00, units = "days")) / 365.25,1),
+    cohorte = dplyr::case_when(nodo==1~"Malaga",nodo==2~"Sevilla",nodo==4~"Mallorca",
+                               nodo==5~"Clinic",nodo==6~"IMIM",nodo==7~"Reus",nodo==10~"Navarra",
+                               nodo==11~"Vitoria",nodo==13~"Canarias",nodo==14~"Bellvitge",
+                               TRUE ~ paste0("Nodo_", nodo))) %>%
+  dplyr::group_by(cohorte) %>%
+  dplyr::summarise(
+    person_years = sum(fu_years, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(person_years))
+write.table(pyears,file="./Outputs2/nlr/Descriptive/person_years.csv",sep=";",col.names=NA)
+
 
 # plat
 
@@ -1182,6 +1419,23 @@ age_counts <- dat_long %>%
     .groups = "drop"
   )
 write.table(age_counts,file="./Outputs2/plat/Descriptive/non_NA_values_age.csv",sep=";",col.names=NA)
+
+load("./Data/LTPA_PREDIMED2.RData")
+dat<-dat[dat$plat_ok==1,]
+pyears <- dat %>%
+  dplyr::mutate(
+    fu_years = round(as.numeric(difftime(f_ultcontact_plat, seg00, units = "days")) / 365.25,1),
+    cohorte = dplyr::case_when(nodo==1~"Malaga",nodo==2~"Sevilla",nodo==4~"Mallorca",
+                               nodo==5~"Clinic",nodo==6~"IMIM",nodo==7~"Reus",nodo==10~"Navarra",
+                               nodo==11~"Vitoria",nodo==13~"Canarias",nodo==14~"Bellvitge",
+                               TRUE ~ paste0("Nodo_", nodo))) %>%
+  dplyr::group_by(cohorte) %>%
+  dplyr::summarise(
+    person_years = sum(fu_years, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(dplyr::desc(person_years))
+write.table(pyears,file="./Outputs2/plat/Descriptive/person_years.csv",sep=";",col.names=NA)
 
 
 ###########################
@@ -1379,8 +1633,8 @@ for(i in 1:length(vars01))
   plot.data <- plot.data %>%
     filter(seg >= 75) %>%
     select(seg, group0_fit, group1_fit)
-  slope75_85_g0<-intervals(lm(group0_fit~seg,data=plot.data))[2,1]
-  slope75_85_g1<-intervals(lm(group1_fit~seg,data=plot.data))[2,1]
+  slope75_85_g0<-beta_se_ic_guapa2(summary(lm(group0_fit~seg,data=plot.data))$coef[2,1],summary(lm(group0_fit~seg,data=plot.data))$coef[2,2])
+  slope75_85_g1<-beta_se_ic_guapa2(summary(lm(group1_fit~seg,data=plot.data))$coef[2,1],summary(lm(group1_fit~seg,data=plot.data))$coef[2,2])
   
   tab1<-rbind(tab1,cbind(class_g1,beta60_g1,lo60_g1,hi60_g1,beta65_g1,lo65_g1,hi65_g1,
                          beta70_g1,lo70_g1,hi70_g1,beta75_g1,lo75_g1,hi75_g1,beta80_g1,lo80_g1,hi80_g1,beta85_g1,lo85_g1,hi85_g1))
@@ -1550,8 +1804,8 @@ for(i in 1:length(vars01))
   plot.data <- plot.data %>%
     filter(seg >= 75) %>%
     select(seg, group0_fit, group1_fit)
-  slope75_85_g0<-intervals(lm(group0_fit~seg,data=plot.data))[2,1]
-  slope75_85_g1<-intervals(lm(group1_fit~seg,data=plot.data))[2,1]
+  slope75_85_g0<-beta_se_ic_guapa2(summary(lm(group0_fit~seg,data=plot.data))$coef[2,1],summary(lm(group0_fit~seg,data=plot.data))$coef[2,2])
+  slope75_85_g1<-beta_se_ic_guapa2(summary(lm(group1_fit~seg,data=plot.data))$coef[2,1],summary(lm(group1_fit~seg,data=plot.data))$coef[2,2])
   
   tab4<-rbind(tab4,cbind(class_g1,beta60_g1,lo60_g1,hi60_g1,beta65_g1,lo65_g1,hi65_g1,
                          beta70_g1,lo70_g1,hi70_g1,beta75_g1,lo75_g1,hi75_g1,beta80_g1,lo80_g1,hi80_g1,beta85_g1,lo85_g1,hi85_g1))
@@ -1719,8 +1973,8 @@ for(i in 1:length(vars01))
   plot.data <- plot.data %>%
     filter(seg >= 75) %>%
     select(seg, group0_fit, group1_fit)
-  slope75_85_g0<-intervals(lm(group0_fit~seg,data=plot.data))[2,1]
-  slope75_85_g1<-intervals(lm(group1_fit~seg,data=plot.data))[2,1]
+  slope75_85_g0<-beta_se_ic_guapa2(summary(lm(group0_fit~seg,data=plot.data))$coef[2,1],summary(lm(group0_fit~seg,data=plot.data))$coef[2,2])
+  slope75_85_g1<-beta_se_ic_guapa2(summary(lm(group1_fit~seg,data=plot.data))$coef[2,1],summary(lm(group1_fit~seg,data=plot.data))$coef[2,2])
   
   tab5<-rbind(tab5,cbind(class_g1,beta60_g1,lo60_g1,hi60_g1,beta65_g1,lo65_g1,hi65_g1,
                          beta70_g1,lo70_g1,hi70_g1,beta75_g1,lo75_g1,hi75_g1,beta80_g1,lo80_g1,hi80_g1,beta85_g1,lo85_g1,hi85_g1))
@@ -1889,8 +2143,8 @@ for(i in 1:length(vars01))
   plot.data <- plot.data %>%
     filter(seg >= 75) %>%
     select(seg, group0_fit, group1_fit)
-  slope75_85_g0<-intervals(lm(group0_fit~seg,data=plot.data))[2,1]
-  slope75_85_g1<-intervals(lm(group1_fit~seg,data=plot.data))[2,1]
+  slope75_85_g0<-beta_se_ic_guapa2(summary(lm(group0_fit~seg,data=plot.data))$coef[2,1],summary(lm(group0_fit~seg,data=plot.data))$coef[2,2])
+  slope75_85_g1<-beta_se_ic_guapa2(summary(lm(group1_fit~seg,data=plot.data))$coef[2,1],summary(lm(group1_fit~seg,data=plot.data))$coef[2,2])
   
   tab6<-rbind(tab6,cbind(class_g1,beta60_g1,lo60_g1,hi60_g1,beta65_g1,lo65_g1,hi65_g1,
                          beta70_g1,lo70_g1,hi70_g1,beta75_g1,lo75_g1,hi75_g1,beta80_g1,lo80_g1,hi80_g1,beta85_g1,lo85_g1,hi85_g1))
@@ -2058,8 +2312,8 @@ for(i in 1:length(vars01))
   plot.data <- plot.data %>%
     filter(seg >= 75) %>%
     select(seg, group0_fit, group1_fit)
-  slope75_85_g0<-intervals(lm(group0_fit~seg,data=plot.data))[2,1]
-  slope75_85_g1<-intervals(lm(group1_fit~seg,data=plot.data))[2,1]
+  slope75_85_g0<-beta_se_ic_guapa2(summary(lm(group0_fit~seg,data=plot.data))$coef[2,1],summary(lm(group0_fit~seg,data=plot.data))$coef[2,2])
+  slope75_85_g1<-beta_se_ic_guapa2(summary(lm(group1_fit~seg,data=plot.data))$coef[2,1],summary(lm(group1_fit~seg,data=plot.data))$coef[2,2])
   
   tab7<-rbind(tab7,cbind(class_g1,beta60_g1,lo60_g1,hi60_g1,beta65_g1,lo65_g1,hi65_g1,
                          beta70_g1,lo70_g1,hi70_g1,beta75_g1,lo75_g1,hi75_g1,beta80_g1,lo80_g1,hi80_g1,beta85_g1,lo85_g1,hi85_g1))
@@ -2228,8 +2482,8 @@ for(i in 1:length(vars01))
   plot.data <- plot.data %>%
     filter(seg >= 75) %>%
     select(seg, group0_fit, group1_fit)
-  slope75_85_g0<-intervals(lm(group0_fit~seg,data=plot.data))[2,1]
-  slope75_85_g1<-intervals(lm(group1_fit~seg,data=plot.data))[2,1]
+  slope75_85_g0<-beta_se_ic_guapa2(summary(lm(group0_fit~seg,data=plot.data))$coef[2,1],summary(lm(group0_fit~seg,data=plot.data))$coef[2,2])
+  slope75_85_g1<-beta_se_ic_guapa2(summary(lm(group1_fit~seg,data=plot.data))$coef[2,1],summary(lm(group1_fit~seg,data=plot.data))$coef[2,2])
   
   tab8<-rbind(tab8,cbind(class_g1,beta60_g1,lo60_g1,hi60_g1,beta65_g1,lo65_g1,hi65_g1,
                          beta70_g1,lo70_g1,hi70_g1,beta75_g1,lo75_g1,hi75_g1,beta80_g1,lo80_g1,hi80_g1,beta85_g1,lo85_g1,hi85_g1))
@@ -8417,17 +8671,1084 @@ for(i in 1:length(vars01))
 }
 
 
+#######################
+### FILTRATION RATE ###
+#######################
+
+vars00<-c("Estimated glomerular filtration rate, mL/min·1.73 m²\n(predicted values, 95% CI)")
+vars0x<-c("eGFR (mL/min·1.73 m²)")
+vars01<-c("egfr")
+vars02<-c("egfr_ok")
+vars03<-c("ckd_00")
+
+vars04<-c("60","61","62","63","64",
+          "65","66","67","68","69","70","71","72","73","74",
+          "75","76","77","78","79","80")
+
+for(i in 1:length(vars01))
+  
+{
+  tab1<-NULL
+  tab2<-NULL
+  tab3<-NULL
+  tab4<-NULL
+  tab5<-NULL
+  tab6<-NULL
+  tab7<-NULL
+  tab8<-NULL
+  
+  # ALL PARTICIPANTS #
+  load("./Data/LTPA_PREDIMED2_long.RData")
+  dat_long<-dat_long[!is.na(dat_long[,vars01[i]]) & dat_long[,vars02[i]]==1,]
+  
+  xxx<-dat_long[,c("id",vars01[i],"mvltpa_cat2","age","sexo","escolar00","grup_int2",
+                   "diabetes00","hipercol00","hta00","tobacco200","bmi00","dmed00","kcal00")]
+  names(xxx)<-c("id","variable","group","seg","sexo","escolar","grup_int",
+                "diabetes","hipercol","hta","tabaco","bmi","dmed","kcal")
+  xxx$id2<-as.factor(xxx$id)
+  xxx$seg<-as.numeric(xxx$seg)
+  xxx$dmed<-as.numeric(xxx$dmed)
+  
+  # Non-linear age is better than linear age?
+  mod_lin<-lme(variable~seg*group+sexo+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  # Is the risk factor different in the groups of MVLTPA?
+  mod_par<-lme(variable~bs(seg, df=4)+group+sexo+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  # Our model: Non-linear mixed model
+  mod_gam<-lme(variable~bs(seg, df=4)*group+sexo+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  
+  pval_group<-pval_guapa(summary(mod_gam)$tTable[6,5])
+  pval_time_group<-pval_guapa(lrtest(mod_par,mod_gam)[2,5])
+  pval_nonlin_time<-pval_guapa(lrtest(mod_lin,mod_gam)[2,5])
+  
+  # Estimation of predicted values of BMI over time in the four non-linear equations
+  gam_predict<-expand.grid(group=factor(c(0,1)),
+                           seg=seq(60,80,by=1),
+                           id=unique(dat_long$id))
+  
+  xxx<-as.data.frame(unique(cbind(dat_long$id,dat_long$mvltpa_cat2,dat_long$sexo,dat_long$escolar00,dat_long$grup_int2,
+                                  dat_long$diabetes00,dat_long$hipercol00,dat_long$hta00,dat_long$tobacco200,dat_long$bmi00,dat_long$dmed00,dat_long$kcal00)))
+  vars_needed<-c("id","group_ok","sexo","escolar","grup_int","diabetes","hipercol","hta","tabaco","bmi","dmed","kcal")
+  names(xxx)<-vars_needed
+  xxx$dmed<-as.numeric(xxx$dmed)
+  
+  gam_predict<-merge2(gam_predict,xxx,by.id=c("id"),all.x=TRUE,sort=FALSE)
+  gam_predict$group_ok<-as.numeric(gam_predict$group_ok)-1
+  gam_predict$id2<-as.factor(gam_predict$id)
+  gam_predict<-tidyr::drop_na(gam_predict, all_of(vars_needed))
+  
+  gam_predict<-gam_predict %>% 
+    mutate(fit=predict(mod_gam,gam_predict,level=0,type="response"))
+  
+  gam_predict<-gam_predict[gam_predict$group==gam_predict$group_ok,]
+  gam_predict0<-gam_predict[gam_predict$group==0,c("id","seg","fit")]
+  gam_predict1<-gam_predict[gam_predict$group==1,c("id","seg","fit")]
+  
+  group0<-NULL
+  for(j in 1:length(vars04))
+  {
+    xxx<-na.omit(gam_predict0[gam_predict0$seg==vars04[j],])
+    meanx<-mean(xxx$fit)
+    stdex<-se(xxx$fit)
+    group0<-as.data.frame(rbind(group0,cbind(as.numeric(vars04[j]),meanx,meanx-z*stdex,meanx+z*stdex)))
+  }
+  names(group0)<-c("seg","group0_fit","group0_lo","group0_hi")
+  
+  group1<-NULL
+  for(j in 1:length(vars04))
+  {
+    xxx<-na.omit(gam_predict1[gam_predict1$seg==vars04[j],])
+    meanx<-mean(xxx$fit)
+    stdex<-se(xxx$fit)
+    group1<-as.data.frame(rbind(group1,cbind(as.numeric(vars04[j]),meanx,meanx-z*stdex,meanx+z*stdex)))
+  }
+  names(group1)<-c("seg","group1_fit","group1_lo","group1_hi")
+  
+  plot.data<-merge2(group0,group1,by.id=c("seg"),all.x=TRUE,sort=FALSE)
+  figure<-ggplot(data=plot.data, aes_string(x='seg', y='group0_fit')) + 
+    geom_ribbon(aes_string(ymin='group0_lo', ymax='group0_hi'), alpha=0.25, fill="#2b2b2b") +
+    geom_line(aes_string(x='seg', y='group0_fit'), color='#2b2b2b') + 
+    geom_ribbon(aes_string(ymin='group1_lo', ymax='group1_hi'), alpha=0.25, fill="#0072B2") +
+    geom_line(aes_string(x='seg', y='group1_fit'), color='#0072B2') +
+    theme_bw() +
+    scale_x_continuous(expand = expansion(mult = c(0, 0.005))) +
+    labs(x=c("Follow-up time (years)"),y=vars00[i]) +
+    theme(axis.title.x = element_text(vjust=0.5, size=18, face="bold"), 
+          axis.title.y = element_text(vjust=0.5, size=18, face="bold"),
+          axis.text.x = element_text(size=16, colour = 'black'),
+          axis.text.y = element_text(size=16, colour = 'black'),
+          axis.ticks.x = element_line(colour = 'black'),
+          axis.ticks.y = element_line(colour = 'black'),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          axis.text.y.right = element_blank(),
+          axis.ticks.y.right = element_blank())
+  
+  namefile<-paste("./Outputs2/",vars01[i],"/Repeated/",vars01[i],"_all.jpg",sep="")
+  ggsave(filename=namefile,dpi=1200)
+  par(las=1,cex=1.2,mar=c(6,6,2,0),bty="n",lheight=0.9)
+  figure
+  dev.off()
+  
+  gam_predictx<-spread(gam_predict[gam_predict$seg==60 | gam_predict$seg==65 | gam_predict$seg==70 | gam_predict$seg==75 | gam_predict$seg==80,
+                                   c("id","seg","fit","group")], seg, fit)
+  names(gam_predictx)<-c("id","group","v60","v65","v70","v75","v80")
+  
+  mod60<-lm(v60~as.factor(group),data=gam_predictx)
+  mod65<-lm(v65~as.factor(group),data=gam_predictx)
+  mod70<-lm(v70~as.factor(group),data=gam_predictx)
+  mod75<-lm(v75~as.factor(group),data=gam_predictx)
+  mod80<-lm(v80~as.factor(group),data=gam_predictx)
+  mod85<-NA
+  
+  class_g1<-c(">100 vs. <100")
+  beta60_g1<-intervals(mod60)[2,1]
+  lo60_g1<-intervals(mod60)[2,2]
+  hi60_g1<-intervals(mod60)[2,3]
+  coef60_g1<-ic_guapa2(guapa(beta60_g1),guapa(lo60_g1),guapa(hi60_g1))
+  pval60_g1<-pval_guapa(intervals(mod60)[2,4])
+  beta65_g1<-intervals(mod65)[2,1]
+  lo65_g1<-intervals(mod65)[2,2]
+  hi65_g1<-intervals(mod65)[2,3]
+  coef65_g1<-ic_guapa2(guapa(beta65_g1),guapa(lo65_g1),guapa(hi65_g1))
+  pval65_g1<-pval_guapa(intervals(mod65)[2,4])
+  beta70_g1<-intervals(mod70)[2,1]
+  lo70_g1<-intervals(mod70)[2,2]
+  hi70_g1<-intervals(mod70)[2,3]
+  coef70_g1<-ic_guapa2(guapa(beta70_g1),guapa(lo70_g1),guapa(hi70_g1))
+  pval70_g1<-pval_guapa(intervals(mod70)[2,4])
+  beta75_g1<-intervals(mod75)[2,1]
+  lo75_g1<-intervals(mod75)[2,2]
+  hi75_g1<-intervals(mod75)[2,3]
+  coef75_g1<-ic_guapa2(guapa(beta75_g1),guapa(lo75_g1),guapa(hi75_g1))
+  pval75_g1<-pval_guapa(intervals(mod75)[2,4])
+  beta80_g1<-intervals(mod80)[2,1]
+  lo80_g1<-intervals(mod80)[2,2]
+  hi80_g1<-intervals(mod80)[2,3]
+  coef80_g1<-ic_guapa2(guapa(beta80_g1),guapa(lo80_g1),guapa(hi80_g1))
+  pval80_g1<-pval_guapa(intervals(mod80)[2,4])
+  beta85_g1<-NA
+  lo85_g1<-NA
+  hi85_g1<-NA
+  coef85_g1<-NA
+  pval85_g1<-NA
+  
+  plot.data <- plot.data %>%
+    filter(seg >= 70) %>%
+    select(seg, group0_fit, group1_fit)
+  slope70_80_g0<-beta_se_ic_guapa2(summary(lm(group0_fit~seg,data=plot.data))$coef[2,1],summary(lm(group0_fit~seg,data=plot.data))$coef[2,2])
+  slope70_80_g1<-beta_se_ic_guapa2(summary(lm(group1_fit~seg,data=plot.data))$coef[2,1],summary(lm(group1_fit~seg,data=plot.data))$coef[2,2])
+  
+  tab1<-rbind(tab1,cbind(class_g1,beta60_g1,lo60_g1,hi60_g1,beta65_g1,lo65_g1,hi65_g1,
+                         beta70_g1,lo70_g1,hi70_g1,beta75_g1,lo75_g1,hi75_g1,beta80_g1,lo80_g1,hi80_g1,beta85_g1,lo85_g1,hi85_g1))
+  tab2<-rbind(tab2,cbind(class_g1,pval_group,pval_time_group,pval_nonlin_time,coef60_g1,pval60_g1,coef65_g1,pval65_g1,
+                         coef70_g1,pval70_g1,coef75_g1,pval75_g1,coef80_g1,pval80_g1,coef85_g1,pval85_g1))
+  tab3<-rbind(tab3,cbind(slope70_80_g0,slope70_80_g1))
+  
+  
+  # ONLY WOMEN #
+  load("./Data/LTPA_PREDIMED2_long.RData")
+  dat_long<-dat_long[!is.na(dat_long[,vars01[i]]) & dat_long[,vars02[i]]==1 & dat_long$sexo==1,]
+  
+  xxx<-dat_long[,c("id",vars01[i],"mvltpa_cat2","age","escolar00","grup_int2",
+                   "diabetes00","hipercol00","hta00","tobacco200","bmi00","dmed00","kcal00")]
+  names(xxx)<-c("id","variable","group","seg","escolar","grup_int",
+                "diabetes","hipercol","hta","tabaco","bmi","dmed","kcal")
+  xxx$id2<-as.factor(xxx$id)
+  xxx$seg<-as.numeric(xxx$seg)
+  xxx$dmed<-as.numeric(xxx$dmed)
+  
+  # Non-linear age is better than linear age?
+  mod_lin<-lme(variable~seg*group+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  # Is BMI different in the groups of MVLTPA?
+  mod_par<-lme(variable~bs(seg, df=4)+group+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  # Our model: Non-linear mixed model
+  mod_gam<-lme(variable~bs(seg, df=4)*group+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  
+  pval_group<-pval_guapa(summary(mod_gam)$tTable[6,5])
+  pval_time_group<-pval_guapa(lrtest(mod_par,mod_gam)[2,5])
+  pval_nonlin_time<-pval_guapa(lrtest(mod_lin,mod_gam)[2,5])
+  
+  # Estimation of predicted values of the risk factor over time in the four non-linear equations
+  gam_predict<-expand.grid(group=factor(c(0,1)),
+                           seg=seq(60,80,by=1),
+                           id=unique(dat_long$id))
+  
+  xxx<-as.data.frame(unique(cbind(dat_long$id,dat_long$mvltpa_cat2,dat_long$escolar00,dat_long$grup_int2,
+                                  dat_long$diabetes00,dat_long$hipercol00,dat_long$hta00,dat_long$tobacco200,dat_long$bmi00,dat_long$dmed00,dat_long$kcal00)))
+  vars_needed<-c("id","group_ok","escolar","grup_int","diabetes","hipercol","hta","tabaco","bmi","dmed","kcal")
+  names(xxx)<-vars_needed
+  xxx$dmed<-as.numeric(xxx$dmed)
+  
+  gam_predict<-merge2(gam_predict,xxx,by.id=c("id"),all.x=TRUE,sort=FALSE)
+  gam_predict$group_ok<-as.numeric(gam_predict$group_ok)-1
+  gam_predict$id2<-as.factor(gam_predict$id)
+  gam_predict<-tidyr::drop_na(gam_predict, all_of(vars_needed))
+  
+  gam_predict<-gam_predict %>% 
+    mutate(fit=predict(mod_gam,gam_predict,level=0,type="response"))
+  
+  gam_predict<-gam_predict[gam_predict$group==gam_predict$group_ok,]
+  gam_predict0<-gam_predict[gam_predict$group==0,c("id","seg","fit")]
+  gam_predict1<-gam_predict[gam_predict$group==1,c("id","seg","fit")]
+  
+  group0<-NULL
+  for(j in 1:length(vars04))
+  {
+    xxx<-na.omit(gam_predict0[gam_predict0$seg==vars04[j],])
+    meanx<-mean(xxx$fit)
+    stdex<-se(xxx$fit)
+    group0<-as.data.frame(rbind(group0,cbind(as.numeric(vars04[j]),meanx,meanx-z*stdex,meanx+z*stdex)))
+  }
+  names(group0)<-c("seg","group0_fit","group0_lo","group0_hi")
+  
+  group1<-NULL
+  for(j in 1:length(vars04))
+  {
+    xxx<-na.omit(gam_predict1[gam_predict1$seg==vars04[j],])
+    meanx<-mean(xxx$fit)
+    stdex<-se(xxx$fit)
+    group1<-as.data.frame(rbind(group1,cbind(as.numeric(vars04[j]),meanx,meanx-z*stdex,meanx+z*stdex)))
+  }
+  names(group1)<-c("seg","group1_fit","group1_lo","group1_hi")
+  
+  plot.data<-merge2(group0,group1,by.id=c("seg"),all.x=TRUE,sort=FALSE)
+  figure<-ggplot(data=plot.data, aes_string(x='seg', y='group0_fit')) + 
+    geom_ribbon(aes_string(ymin='group0_lo', ymax='group0_hi'), alpha=0.25, fill="#2b2b2b") +
+    geom_line(aes_string(x='seg', y='group0_fit'), color='#2b2b2b') + 
+    geom_ribbon(aes_string(ymin='group1_lo', ymax='group1_hi'), alpha=0.25, fill="#0072B2") +
+    geom_line(aes_string(x='seg', y='group1_fit'), color='#0072B2') +
+    theme_bw() +
+    scale_x_continuous(expand = expansion(mult = c(0, 0.005))) +
+    labs(x=c("Follow-up time (years)"),y=vars00[i]) +
+    theme(axis.title.x = element_text(vjust=0.5, size=18, face="bold"), 
+          axis.title.y = element_text(vjust=0.5, size=18, face="bold"),
+          axis.text.x = element_text(size=16, colour = 'black'),
+          axis.text.y = element_text(size=16, colour = 'black'),
+          axis.ticks.x = element_line(colour = 'black'),
+          axis.ticks.y = element_line(colour = 'black'),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          axis.text.y.right = element_blank(),
+          axis.ticks.y.right = element_blank())
+  
+  namefile<-paste("./Outputs2/",vars01[i],"/Repeated/",vars01[i],"_women.jpg",sep="")
+  ggsave(filename=namefile,dpi=1200)
+  par(las=1,cex=1.2,mar=c(6,6,2,0),bty="n",lheight=0.9)
+  figure
+  dev.off()
+  
+  gam_predictx<-spread(gam_predict[gam_predict$seg==60 | gam_predict$seg==65 | gam_predict$seg==70 | gam_predict$seg==75 | gam_predict$seg==80,
+                                   c("id","seg","fit","group")], seg, fit)
+  names(gam_predictx)<-c("id","group","v60","v65","v70","v75","v80")
+  
+  mod60<-lm(v60~as.factor(group),data=gam_predictx)
+  mod65<-lm(v65~as.factor(group),data=gam_predictx)
+  mod70<-lm(v70~as.factor(group),data=gam_predictx)
+  mod75<-lm(v75~as.factor(group),data=gam_predictx)
+  mod80<-lm(v80~as.factor(group),data=gam_predictx)
+  mod85<-NA
+  
+  class_g1<-c(">100 vs. <100")
+  beta60_g1<-intervals(mod60)[2,1]
+  lo60_g1<-intervals(mod60)[2,2]
+  hi60_g1<-intervals(mod60)[2,3]
+  coef60_g1<-ic_guapa2(guapa(beta60_g1),guapa(lo60_g1),guapa(hi60_g1))
+  pval60_g1<-pval_guapa(intervals(mod60)[2,4])
+  beta65_g1<-intervals(mod65)[2,1]
+  lo65_g1<-intervals(mod65)[2,2]
+  hi65_g1<-intervals(mod65)[2,3]
+  coef65_g1<-ic_guapa2(guapa(beta65_g1),guapa(lo65_g1),guapa(hi65_g1))
+  pval65_g1<-pval_guapa(intervals(mod65)[2,4])
+  beta70_g1<-intervals(mod70)[2,1]
+  lo70_g1<-intervals(mod70)[2,2]
+  hi70_g1<-intervals(mod70)[2,3]
+  coef70_g1<-ic_guapa2(guapa(beta70_g1),guapa(lo70_g1),guapa(hi70_g1))
+  pval70_g1<-pval_guapa(intervals(mod70)[2,4])
+  beta75_g1<-intervals(mod75)[2,1]
+  lo75_g1<-intervals(mod75)[2,2]
+  hi75_g1<-intervals(mod75)[2,3]
+  coef75_g1<-ic_guapa2(guapa(beta75_g1),guapa(lo75_g1),guapa(hi75_g1))
+  pval75_g1<-pval_guapa(intervals(mod75)[2,4])
+  beta80_g1<-intervals(mod80)[2,1]
+  lo80_g1<-intervals(mod80)[2,2]
+  hi80_g1<-intervals(mod80)[2,3]
+  coef80_g1<-ic_guapa2(guapa(beta80_g1),guapa(lo80_g1),guapa(hi80_g1))
+  pval80_g1<-pval_guapa(intervals(mod80)[2,4])
+  beta85_g1<-NA
+  lo85_g1<-NA
+  hi85_g1<-NA
+  coef85_g1<-NA
+  pval85_g1<-NA
+  
+  plot.data <- plot.data %>%
+    filter(seg >= 70) %>%
+    select(seg, group0_fit, group1_fit)
+  slope70_80_g0<-beta_se_ic_guapa2(summary(lm(group0_fit~seg,data=plot.data))$coef[2,1],summary(lm(group0_fit~seg,data=plot.data))$coef[2,2])
+  slope70_80_g1<-beta_se_ic_guapa2(summary(lm(group1_fit~seg,data=plot.data))$coef[2,1],summary(lm(group1_fit~seg,data=plot.data))$coef[2,2])
+  
+  tab4<-rbind(tab4,cbind(class_g1,beta60_g1,lo60_g1,hi60_g1,beta65_g1,lo65_g1,hi65_g1,
+                         beta70_g1,lo70_g1,hi70_g1,beta75_g1,lo75_g1,hi75_g1,beta80_g1,lo80_g1,hi80_g1,beta85_g1,lo85_g1,hi85_g1))
+  tab2<-rbind(tab2,cbind(class_g1,pval_group,pval_time_group,pval_nonlin_time,coef60_g1,pval60_g1,coef65_g1,pval65_g1,
+                         coef70_g1,pval70_g1,coef75_g1,pval75_g1,coef80_g1,pval80_g1,coef85_g1,pval85_g1))
+  tab3<-rbind(tab3,cbind(slope70_80_g0,slope70_80_g1))
+  
+  
+  # MEN ONLY #
+  load("./Data/LTPA_PREDIMED2_long.RData")
+  dat_long<-dat_long[!is.na(dat_long[,vars01[i]]) & dat_long[,vars02[i]]==1 & dat_long$sexo==0,]
+  
+  xxx<-dat_long[,c("id",vars01[i],"mvltpa_cat2","age","escolar00","grup_int2",
+                   "diabetes00","hipercol00","hta00","tobacco200","bmi00","dmed00","kcal00")]
+  names(xxx)<-c("id","variable","group","seg","escolar","grup_int",
+                "diabetes","hipercol","hta","tabaco","bmi","dmed","kcal")
+  xxx$id2<-as.factor(xxx$id)
+  xxx$seg<-as.numeric(xxx$seg)
+  xxx$dmed<-as.numeric(xxx$dmed)
+  
+  # Non-linear age is better than linear age?
+  mod_lin<-lme(variable~seg*group+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  # Is BMI different in the groups of MVLTPA?
+  mod_par<-lme(variable~bs(seg, df=4)+group+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  # Our model: Non-linear mixed model
+  mod_gam<-lme(variable~bs(seg, df=4)*group+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  
+  pval_group<-pval_guapa(summary(mod_gam)$tTable[6,5])
+  pval_time_group<-pval_guapa(lrtest(mod_par,mod_gam)[2,5])
+  pval_nonlin_time<-pval_guapa(lrtest(mod_lin,mod_gam)[2,5])
+  
+  # Estimation of predicted values of BMI over time in the four non-linear equations
+  gam_predict<-expand.grid(group=factor(c(0,1)),
+                           seg=seq(60,80,by=1),
+                           id=unique(dat_long$id))
+  
+  xxx<-as.data.frame(unique(cbind(dat_long$id,dat_long$mvltpa_cat2,dat_long$escolar00,dat_long$grup_int2,
+                                  dat_long$diabetes00,dat_long$hipercol00,dat_long$hta00,dat_long$tobacco200,dat_long$bmi00,dat_long$dmed00,dat_long$kcal00)))
+  vars_needed<-c("id","group_ok","escolar","grup_int","diabetes","hipercol","hta","tabaco","bmi","dmed","kcal")
+  names(xxx)<-vars_needed
+  xxx$dmed<-as.numeric(xxx$dmed)
+  
+  gam_predict<-merge2(gam_predict,xxx,by.id=c("id"),all.x=TRUE,sort=FALSE)
+  gam_predict$group_ok<-as.numeric(gam_predict$group_ok)-1
+  gam_predict$id2<-as.factor(gam_predict$id)
+  gam_predict<-tidyr::drop_na(gam_predict, all_of(vars_needed))
+  
+  gam_predict<-gam_predict %>% 
+    mutate(fit=predict(mod_gam,gam_predict,level=0,type="response"))
+  
+  gam_predict<-gam_predict[gam_predict$group==gam_predict$group_ok,]
+  gam_predict0<-gam_predict[gam_predict$group==0,c("id","seg","fit")]
+  gam_predict1<-gam_predict[gam_predict$group==1,c("id","seg","fit")]
+  
+  group0<-NULL
+  for(j in 1:length(vars04))
+  {
+    xxx<-na.omit(gam_predict0[gam_predict0$seg==vars04[j],])
+    meanx<-mean(xxx$fit)
+    stdex<-se(xxx$fit)
+    group0<-as.data.frame(rbind(group0,cbind(as.numeric(vars04[j]),meanx,meanx-z*stdex,meanx+z*stdex)))
+  }
+  names(group0)<-c("seg","group0_fit","group0_lo","group0_hi")
+  
+  group1<-NULL
+  for(j in 1:length(vars04))
+  {
+    xxx<-na.omit(gam_predict1[gam_predict1$seg==vars04[j],])
+    meanx<-mean(xxx$fit)
+    stdex<-se(xxx$fit)
+    group1<-as.data.frame(rbind(group1,cbind(as.numeric(vars04[j]),meanx,meanx-z*stdex,meanx+z*stdex)))
+  }
+  names(group1)<-c("seg","group1_fit","group1_lo","group1_hi")
+  
+  plot.data<-merge2(group0,group1,by.id=c("seg"),all.x=TRUE,sort=FALSE)
+  figure<-ggplot(data=plot.data, aes_string(x='seg', y='group0_fit')) + 
+    geom_ribbon(aes_string(ymin='group0_lo', ymax='group0_hi'), alpha=0.25, fill="#2b2b2b") +
+    geom_line(aes_string(x='seg', y='group0_fit'), color='#2b2b2b') + 
+    geom_ribbon(aes_string(ymin='group1_lo', ymax='group1_hi'), alpha=0.25, fill="#0072B2") +
+    geom_line(aes_string(x='seg', y='group1_fit'), color='#0072B2') +
+    theme_bw() +
+    scale_x_continuous(expand = expansion(mult = c(0, 0.005))) +
+    labs(x=c("Follow-up time (years)"),y=vars00[i]) +
+    theme(axis.title.x = element_text(vjust=0.5, size=18, face="bold"), 
+          axis.title.y = element_text(vjust=0.5, size=18, face="bold"),
+          axis.text.x = element_text(size=16, colour = 'black'),
+          axis.text.y = element_text(size=16, colour = 'black'),
+          axis.ticks.x = element_line(colour = 'black'),
+          axis.ticks.y = element_line(colour = 'black'),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          axis.text.y.right = element_blank(),
+          axis.ticks.y.right = element_blank())
+  
+  namefile<-paste("./Outputs2/",vars01[i],"/Repeated/",vars01[i],"_men.jpg",sep="")
+  ggsave(filename=namefile,dpi=1200)
+  par(las=1,cex=1.2,mar=c(6,6,2,0),bty="n",lheight=0.9)
+  figure
+  dev.off()
+  
+  gam_predictx<-spread(gam_predict[gam_predict$seg==60 | gam_predict$seg==65 | gam_predict$seg==70 | gam_predict$seg==75 | gam_predict$seg==80,
+                                   c("id","seg","fit","group")], seg, fit)
+  names(gam_predictx)<-c("id","group","v60","v65","v70","v75","v80")
+  
+  mod60<-lm(v60~as.factor(group),data=gam_predictx)
+  mod65<-lm(v65~as.factor(group),data=gam_predictx)
+  mod70<-lm(v70~as.factor(group),data=gam_predictx)
+  mod75<-lm(v75~as.factor(group),data=gam_predictx)
+  mod80<-lm(v80~as.factor(group),data=gam_predictx)
+  mod85<-NA
+  
+  class_g1<-c(">100 vs. <100")
+  beta60_g1<-intervals(mod60)[2,1]
+  lo60_g1<-intervals(mod60)[2,2]
+  hi60_g1<-intervals(mod60)[2,3]
+  coef60_g1<-ic_guapa2(guapa(beta60_g1),guapa(lo60_g1),guapa(hi60_g1))
+  pval60_g1<-pval_guapa(intervals(mod60)[2,4])
+  beta65_g1<-intervals(mod65)[2,1]
+  lo65_g1<-intervals(mod65)[2,2]
+  hi65_g1<-intervals(mod65)[2,3]
+  coef65_g1<-ic_guapa2(guapa(beta65_g1),guapa(lo65_g1),guapa(hi65_g1))
+  pval65_g1<-pval_guapa(intervals(mod65)[2,4])
+  beta70_g1<-intervals(mod70)[2,1]
+  lo70_g1<-intervals(mod70)[2,2]
+  hi70_g1<-intervals(mod70)[2,3]
+  coef70_g1<-ic_guapa2(guapa(beta70_g1),guapa(lo70_g1),guapa(hi70_g1))
+  pval70_g1<-pval_guapa(intervals(mod70)[2,4])
+  beta75_g1<-intervals(mod75)[2,1]
+  lo75_g1<-intervals(mod75)[2,2]
+  hi75_g1<-intervals(mod75)[2,3]
+  coef75_g1<-ic_guapa2(guapa(beta75_g1),guapa(lo75_g1),guapa(hi75_g1))
+  pval75_g1<-pval_guapa(intervals(mod75)[2,4])
+  beta80_g1<-intervals(mod80)[2,1]
+  lo80_g1<-intervals(mod80)[2,2]
+  hi80_g1<-intervals(mod80)[2,3]
+  coef80_g1<-ic_guapa2(guapa(beta80_g1),guapa(lo80_g1),guapa(hi80_g1))
+  pval80_g1<-pval_guapa(intervals(mod80)[2,4])
+  beta85_g1<-NA
+  lo85_g1<-NA
+  hi85_g1<-NA
+  coef85_g1<-NA
+  pval85_g1<-NA
+  
+  plot.data <- plot.data %>%
+    filter(seg >= 70) %>%
+    select(seg, group0_fit, group1_fit)
+  slope70_80_g0<-beta_se_ic_guapa2(summary(lm(group0_fit~seg,data=plot.data))$coef[2,1],summary(lm(group0_fit~seg,data=plot.data))$coef[2,2])
+  slope70_80_g1<-beta_se_ic_guapa2(summary(lm(group1_fit~seg,data=plot.data))$coef[2,1],summary(lm(group1_fit~seg,data=plot.data))$coef[2,2])
+  
+  tab5<-rbind(tab5,cbind(class_g1,beta60_g1,lo60_g1,hi60_g1,beta65_g1,lo65_g1,hi65_g1,
+                         beta70_g1,lo70_g1,hi70_g1,beta75_g1,lo75_g1,hi75_g1,beta80_g1,lo80_g1,hi80_g1,beta85_g1,lo85_g1,hi85_g1))
+  tab2<-rbind(tab2,cbind(class_g1,pval_group,pval_time_group,pval_nonlin_time,coef60_g1,pval60_g1,coef65_g1,pval65_g1,
+                         coef70_g1,pval70_g1,coef75_g1,pval75_g1,coef80_g1,pval80_g1,coef85_g1,pval85_g1))
+  tab3<-rbind(tab3,cbind(slope70_80_g0,slope70_80_g1))
+  
+  
+  # PARTICIPANTS WITH THE CONDITION - ALL #
+  load("./Data/LTPA_PREDIMED2_long.RData")
+  dat_long<-dat_long[!is.na(dat_long[,vars01[i]]) & dat_long[,vars02[i]]==1 & dat_long[,vars03[i]]==1,]
+  
+  xxx<-dat_long[,c("id",vars01[i],"mvltpa_cat2","age","sexo","escolar00","grup_int2",
+                   "diabetes00","hipercol00","hta00","tobacco200","bmi00","dmed00","kcal00")]
+  names(xxx)<-c("id","variable","group","seg","sexo","escolar","grup_int",
+                "diabetes","hipercol","hta","tabaco","bmi","dmed","kcal")
+  xxx$id2<-as.factor(xxx$id)
+  xxx$seg<-as.numeric(xxx$seg)
+  xxx$dmed<-as.numeric(xxx$dmed)
+  
+  # Non-linear age is better than linear age?
+  mod_lin<-lme(variable~seg*group+sexo+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  # Is the risk factor different in the groups of MVLTPA?
+  mod_par<-lme(variable~bs(seg, df=4)+group+sexo+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  # Our model: Non-linear mixed model
+  mod_gam<-lme(variable~bs(seg, df=4)*group+sexo+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  
+  pval_group<-pval_guapa(summary(mod_gam)$tTable[6,5])
+  pval_time_group<-pval_guapa(lrtest(mod_par,mod_gam)[2,5])
+  pval_nonlin_time<-pval_guapa(lrtest(mod_lin,mod_gam)[2,5])
+  
+  # Estimation of predicted values of the risk factor over time in the four non-linear equations
+  gam_predict<-expand.grid(group=factor(c(0,1)),
+                           seg=seq(60,80,by=1),
+                           id=unique(dat_long$id))
+  
+  xxx<-as.data.frame(unique(cbind(dat_long$id,dat_long$mvltpa_cat2,dat_long$sexo,dat_long$escolar00,dat_long$grup_int2,
+                                  dat_long$diabetes00,dat_long$hipercol00,dat_long$hta00,dat_long$tobacco200,dat_long$bmi00,dat_long$dmed00,dat_long$kcal00)))
+  vars_needed<-c("id","group_ok","sexo","escolar","grup_int","diabetes","hipercol","hta","tabaco","bmi","dmed","kcal")
+  names(xxx)<-vars_needed
+  xxx$dmed<-as.numeric(xxx$dmed)
+  
+  gam_predict<-merge2(gam_predict,xxx,by.id=c("id"),all.x=TRUE,sort=FALSE)
+  gam_predict$group_ok<-as.numeric(gam_predict$group_ok)-1
+  gam_predict$id2<-as.factor(gam_predict$id)
+  gam_predict<-tidyr::drop_na(gam_predict, all_of(vars_needed))
+  
+  gam_predict<-gam_predict %>% 
+    mutate(fit=predict(mod_gam,gam_predict,level=0,type="response"))
+  
+  gam_predict<-gam_predict[gam_predict$group==gam_predict$group_ok,]
+  gam_predict0<-gam_predict[gam_predict$group==0,c("id","seg","fit")]
+  gam_predict1<-gam_predict[gam_predict$group==1,c("id","seg","fit")]
+  
+  group0<-NULL
+  for(j in 1:length(vars04))
+  {
+    xxx<-na.omit(gam_predict0[gam_predict0$seg==vars04[j],])
+    meanx<-mean(xxx$fit)
+    stdex<-se(xxx$fit)
+    group0<-as.data.frame(rbind(group0,cbind(as.numeric(vars04[j]),meanx,meanx-z*stdex,meanx+z*stdex)))
+  }
+  names(group0)<-c("seg","group0_fit","group0_lo","group0_hi")
+  
+  group1<-NULL
+  for(j in 1:length(vars04))
+  {
+    xxx<-na.omit(gam_predict1[gam_predict1$seg==vars04[j],])
+    meanx<-mean(xxx$fit)
+    stdex<-se(xxx$fit)
+    group1<-as.data.frame(rbind(group1,cbind(as.numeric(vars04[j]),meanx,meanx-z*stdex,meanx+z*stdex)))
+  }
+  names(group1)<-c("seg","group1_fit","group1_lo","group1_hi")
+  
+  plot.data<-merge2(group0,group1,by.id=c("seg"),all.x=TRUE,sort=FALSE)
+  figure<-ggplot(data=plot.data, aes_string(x='seg', y='group0_fit')) + 
+    geom_ribbon(aes_string(ymin='group0_lo', ymax='group0_hi'), alpha=0.25, fill="#2b2b2b") +
+    geom_line(aes_string(x='seg', y='group0_fit'), color='#2b2b2b') + 
+    geom_ribbon(aes_string(ymin='group1_lo', ymax='group1_hi'), alpha=0.25, fill="#0072B2") +
+    geom_line(aes_string(x='seg', y='group1_fit'), color='#0072B2') +
+    theme_bw() +
+    scale_x_continuous(expand = expansion(mult = c(0, 0.005))) +
+    labs(x=c("Follow-up time (years)"),y=vars00[i]) +
+    theme(axis.title.x = element_text(vjust=0.5, size=18, face="bold"), 
+          axis.title.y = element_text(vjust=0.5, size=18, face="bold"),
+          axis.text.x = element_text(size=16, colour = 'black'),
+          axis.text.y = element_text(size=16, colour = 'black'),
+          axis.ticks.x = element_line(colour = 'black'),
+          axis.ticks.y = element_line(colour = 'black'),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          axis.text.y.right = element_blank(),
+          axis.ticks.y.right = element_blank())
+  
+  namefile<-paste("./Outputs2/",vars01[i],"/Repeated/",vars01[i],"_cond_all.jpg",sep="")
+  ggsave(filename=namefile,dpi=1200)
+  par(las=1,cex=1.2,mar=c(6,6,2,0),bty="n",lheight=0.9)
+  figure
+  dev.off()
+  
+  gam_predictx<-spread(gam_predict[gam_predict$seg==60 | gam_predict$seg==65 | gam_predict$seg==70 | gam_predict$seg==75 | gam_predict$seg==80,
+                                   c("id","seg","fit","group")], seg, fit)
+  names(gam_predictx)<-c("id","group","v60","v65","v70","v75","v80")
+  
+  mod60<-lm(v60~as.factor(group),data=gam_predictx)
+  mod65<-lm(v65~as.factor(group),data=gam_predictx)
+  mod70<-lm(v70~as.factor(group),data=gam_predictx)
+  mod75<-lm(v75~as.factor(group),data=gam_predictx)
+  mod80<-lm(v80~as.factor(group),data=gam_predictx)
+  mod85<-NA
+  
+  class_g1<-c(">100 vs. <100")
+  beta60_g1<-intervals(mod60)[2,1]
+  lo60_g1<-intervals(mod60)[2,2]
+  hi60_g1<-intervals(mod60)[2,3]
+  coef60_g1<-ic_guapa2(guapa(beta60_g1),guapa(lo60_g1),guapa(hi60_g1))
+  pval60_g1<-pval_guapa(intervals(mod60)[2,4])
+  beta65_g1<-intervals(mod65)[2,1]
+  lo65_g1<-intervals(mod65)[2,2]
+  hi65_g1<-intervals(mod65)[2,3]
+  coef65_g1<-ic_guapa2(guapa(beta65_g1),guapa(lo65_g1),guapa(hi65_g1))
+  pval65_g1<-pval_guapa(intervals(mod65)[2,4])
+  beta70_g1<-intervals(mod70)[2,1]
+  lo70_g1<-intervals(mod70)[2,2]
+  hi70_g1<-intervals(mod70)[2,3]
+  coef70_g1<-ic_guapa2(guapa(beta70_g1),guapa(lo70_g1),guapa(hi70_g1))
+  pval70_g1<-pval_guapa(intervals(mod70)[2,4])
+  beta75_g1<-intervals(mod75)[2,1]
+  lo75_g1<-intervals(mod75)[2,2]
+  hi75_g1<-intervals(mod75)[2,3]
+  coef75_g1<-ic_guapa2(guapa(beta75_g1),guapa(lo75_g1),guapa(hi75_g1))
+  pval75_g1<-pval_guapa(intervals(mod75)[2,4])
+  beta80_g1<-intervals(mod80)[2,1]
+  lo80_g1<-intervals(mod80)[2,2]
+  hi80_g1<-intervals(mod80)[2,3]
+  coef80_g1<-ic_guapa2(guapa(beta80_g1),guapa(lo80_g1),guapa(hi80_g1))
+  pval80_g1<-pval_guapa(intervals(mod80)[2,4])
+  beta85_g1<-NA
+  lo85_g1<-NA
+  hi85_g1<-NA
+  coef85_g1<-NA
+  pval85_g1<-NA
+  
+  plot.data <- plot.data %>%
+    filter(seg >= 70) %>%
+    select(seg, group0_fit, group1_fit)
+  slope70_80_g0<-beta_se_ic_guapa2(summary(lm(group0_fit~seg,data=plot.data))$coef[2,1],summary(lm(group0_fit~seg,data=plot.data))$coef[2,2])
+  slope70_80_g1<-beta_se_ic_guapa2(summary(lm(group1_fit~seg,data=plot.data))$coef[2,1],summary(lm(group1_fit~seg,data=plot.data))$coef[2,2])
+  
+  tab6<-rbind(tab6,cbind(class_g1,beta60_g1,lo60_g1,hi60_g1,beta65_g1,lo65_g1,hi65_g1,
+                         beta70_g1,lo70_g1,hi70_g1,beta75_g1,lo75_g1,hi75_g1,beta80_g1,lo80_g1,hi80_g1,beta85_g1,lo85_g1,hi85_g1))
+  tab2<-rbind(tab2,cbind(class_g1,pval_group,pval_time_group,pval_nonlin_time,coef60_g1,pval60_g1,coef65_g1,pval65_g1,
+                         coef70_g1,pval70_g1,coef75_g1,pval75_g1,coef80_g1,pval80_g1,coef85_g1,pval85_g1))
+  tab3<-rbind(tab3,cbind(slope70_80_g0,slope70_80_g1))
+  
+  
+  # PARTICIPANTS WITH THE CONDITION - WOMEN #
+  load("./Data/LTPA_PREDIMED2_long.RData")
+  dat_long<-dat_long[!is.na(dat_long[,vars01[i]]) & dat_long[,vars02[i]]==1 & dat_long[,vars03[i]]==1 & dat_long$sexo==1,]
+  
+  xxx<-dat_long[,c("id",vars01[i],"mvltpa_cat2","age","escolar00","grup_int2",
+                   "diabetes00","hipercol00","hta00","tobacco200","bmi00","dmed00","kcal00")]
+  names(xxx)<-c("id","variable","group","seg","escolar","grup_int",
+                "diabetes","hipercol","hta","tabaco","bmi","dmed","kcal")
+  xxx$id2<-as.factor(xxx$id)
+  xxx$seg<-as.numeric(xxx$seg)
+  xxx$dmed<-as.numeric(xxx$dmed)
+  
+  # Non-linear age is better than linear age?
+  mod_lin<-lme(variable~seg*group+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  # Is the risk factor different in the groups of MVLTPA?
+  mod_par<-lme(variable~bs(seg, df=4)+group+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  # Our model: Non-linear mixed model
+  mod_gam<-lme(variable~bs(seg, df=4)*group+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  
+  pval_group<-pval_guapa(summary(mod_gam)$tTable[6,5])
+  pval_time_group<-pval_guapa(lrtest(mod_par,mod_gam)[2,5])
+  pval_nonlin_time<-pval_guapa(lrtest(mod_lin,mod_gam)[2,5])
+  
+  # Estimation of predicted values of the risk factor over time in the four non-linear equations
+  gam_predict<-expand.grid(group=factor(c(0,1)),
+                           seg=seq(60,80,by=1),
+                           id=unique(dat_long$id))
+  
+  xxx<-as.data.frame(unique(cbind(dat_long$id,dat_long$mvltpa_cat2,dat_long$escolar00,dat_long$grup_int2,
+                                  dat_long$diabetes00,dat_long$hipercol00,dat_long$hta00,dat_long$tobacco200,dat_long$bmi00,dat_long$dmed00,dat_long$kcal00)))
+  vars_needed<-c("id","group_ok","escolar","grup_int","diabetes","hipercol","hta","tabaco","bmi","dmed","kcal")
+  names(xxx)<-vars_needed
+  xxx$dmed<-as.numeric(xxx$dmed)
+  
+  gam_predict<-merge2(gam_predict,xxx,by.id=c("id"),all.x=TRUE,sort=FALSE)
+  gam_predict$group_ok<-as.numeric(gam_predict$group_ok)-1
+  gam_predict$id2<-as.factor(gam_predict$id)
+  gam_predict<-tidyr::drop_na(gam_predict, all_of(vars_needed))
+  
+  gam_predict<-gam_predict %>% 
+    mutate(fit=predict(mod_gam,gam_predict,level=0,type="response"))
+  
+  gam_predict<-gam_predict[gam_predict$group==gam_predict$group_ok,]
+  gam_predict0<-gam_predict[gam_predict$group==0,c("id","seg","fit")]
+  gam_predict1<-gam_predict[gam_predict$group==1,c("id","seg","fit")]
+  
+  group0<-NULL
+  for(j in 1:length(vars04))
+  {
+    xxx<-na.omit(gam_predict0[gam_predict0$seg==vars04[j],])
+    meanx<-mean(xxx$fit)
+    stdex<-se(xxx$fit)
+    group0<-as.data.frame(rbind(group0,cbind(as.numeric(vars04[j]),meanx,meanx-z*stdex,meanx+z*stdex)))
+  }
+  names(group0)<-c("seg","group0_fit","group0_lo","group0_hi")
+  
+  group1<-NULL
+  for(j in 1:length(vars04))
+  {
+    xxx<-na.omit(gam_predict1[gam_predict1$seg==vars04[j],])
+    meanx<-mean(xxx$fit)
+    stdex<-se(xxx$fit)
+    group1<-as.data.frame(rbind(group1,cbind(as.numeric(vars04[j]),meanx,meanx-z*stdex,meanx+z*stdex)))
+  }
+  names(group1)<-c("seg","group1_fit","group1_lo","group1_hi")
+  
+  plot.data<-merge2(group0,group1,by.id=c("seg"),all.x=TRUE,sort=FALSE)
+  figure<-ggplot(data=plot.data, aes_string(x='seg', y='group0_fit')) + 
+    geom_ribbon(aes_string(ymin='group0_lo', ymax='group0_hi'), alpha=0.25, fill="#2b2b2b") +
+    geom_line(aes_string(x='seg', y='group0_fit'), color='#2b2b2b') + 
+    geom_ribbon(aes_string(ymin='group1_lo', ymax='group1_hi'), alpha=0.25, fill="#0072B2") +
+    geom_line(aes_string(x='seg', y='group1_fit'), color='#0072B2') +
+    theme_bw() +
+    scale_x_continuous(expand = expansion(mult = c(0, 0.005))) +
+    labs(x=c("Follow-up time (years)"),y=vars00[i]) +
+    theme(axis.title.x = element_text(vjust=0.5, size=18, face="bold"), 
+          axis.title.y = element_text(vjust=0.5, size=18, face="bold"),
+          axis.text.x = element_text(size=16, colour = 'black'),
+          axis.text.y = element_text(size=16, colour = 'black'),
+          axis.ticks.x = element_line(colour = 'black'),
+          axis.ticks.y = element_line(colour = 'black'),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          axis.text.y.right = element_blank(),
+          axis.ticks.y.right = element_blank())
+  
+  namefile<-paste("./Outputs2/",vars01[i],"/Repeated/",vars01[i],"_cond_women.jpg",sep="")
+  ggsave(filename=namefile,dpi=1200)
+  par(las=1,cex=1.2,mar=c(6,6,2,0),bty="n",lheight=0.9)
+  figure
+  dev.off()
+  
+  gam_predictx<-spread(gam_predict[gam_predict$seg==60 | gam_predict$seg==65 | gam_predict$seg==70 | gam_predict$seg==75 | gam_predict$seg==80,
+                                   c("id","seg","fit","group")], seg, fit)
+  names(gam_predictx)<-c("id","group","v60","v65","v70","v75","v80")
+  
+  mod60<-lm(v60~as.factor(group),data=gam_predictx)
+  mod65<-lm(v65~as.factor(group),data=gam_predictx)
+  mod70<-lm(v70~as.factor(group),data=gam_predictx)
+  mod75<-lm(v75~as.factor(group),data=gam_predictx)
+  mod80<-lm(v80~as.factor(group),data=gam_predictx)
+  mod85<-NA
+  
+  class_g1<-c(">100 vs. <100")
+  beta60_g1<-intervals(mod60)[2,1]
+  lo60_g1<-intervals(mod60)[2,2]
+  hi60_g1<-intervals(mod60)[2,3]
+  coef60_g1<-ic_guapa2(guapa(beta60_g1),guapa(lo60_g1),guapa(hi60_g1))
+  pval60_g1<-pval_guapa(intervals(mod60)[2,4])
+  beta65_g1<-intervals(mod65)[2,1]
+  lo65_g1<-intervals(mod65)[2,2]
+  hi65_g1<-intervals(mod65)[2,3]
+  coef65_g1<-ic_guapa2(guapa(beta65_g1),guapa(lo65_g1),guapa(hi65_g1))
+  pval65_g1<-pval_guapa(intervals(mod65)[2,4])
+  beta70_g1<-intervals(mod70)[2,1]
+  lo70_g1<-intervals(mod70)[2,2]
+  hi70_g1<-intervals(mod70)[2,3]
+  coef70_g1<-ic_guapa2(guapa(beta70_g1),guapa(lo70_g1),guapa(hi70_g1))
+  pval70_g1<-pval_guapa(intervals(mod70)[2,4])
+  beta75_g1<-intervals(mod75)[2,1]
+  lo75_g1<-intervals(mod75)[2,2]
+  hi75_g1<-intervals(mod75)[2,3]
+  coef75_g1<-ic_guapa2(guapa(beta75_g1),guapa(lo75_g1),guapa(hi75_g1))
+  pval75_g1<-pval_guapa(intervals(mod75)[2,4])
+  beta80_g1<-intervals(mod80)[2,1]
+  lo80_g1<-intervals(mod80)[2,2]
+  hi80_g1<-intervals(mod80)[2,3]
+  coef80_g1<-ic_guapa2(guapa(beta80_g1),guapa(lo80_g1),guapa(hi80_g1))
+  pval80_g1<-pval_guapa(intervals(mod80)[2,4])
+  beta85_g1<-NA
+  lo85_g1<-NA
+  hi85_g1<-NA
+  coef85_g1<-NA
+  pval85_g1<-NA
+  
+  plot.data <- plot.data %>%
+    filter(seg >= 70) %>%
+    select(seg, group0_fit, group1_fit)
+  slope70_80_g0<-beta_se_ic_guapa2(summary(lm(group0_fit~seg,data=plot.data))$coef[2,1],summary(lm(group0_fit~seg,data=plot.data))$coef[2,2])
+  slope70_80_g1<-beta_se_ic_guapa2(summary(lm(group1_fit~seg,data=plot.data))$coef[2,1],summary(lm(group1_fit~seg,data=plot.data))$coef[2,2])
+  
+  tab7<-rbind(tab7,cbind(class_g1,beta60_g1,lo60_g1,hi60_g1,beta65_g1,lo65_g1,hi65_g1,
+                         beta70_g1,lo70_g1,hi70_g1,beta75_g1,lo75_g1,hi75_g1,beta80_g1,lo80_g1,hi80_g1,beta85_g1,lo85_g1,hi85_g1))
+  tab2<-rbind(tab2,cbind(class_g1,pval_group,pval_time_group,pval_nonlin_time,coef60_g1,pval60_g1,coef65_g1,pval65_g1,
+                         coef70_g1,pval70_g1,coef75_g1,pval75_g1,coef80_g1,pval80_g1,coef85_g1,pval85_g1))
+  tab3<-rbind(tab3,cbind(slope70_80_g0,slope70_80_g1))
+  
+  
+  # PARTICIPANTS WITH THE CONDITION - MEN #
+  load("./Data/LTPA_PREDIMED2_long.RData")
+  dat_long<-dat_long[!is.na(dat_long[,vars01[i]]) & dat_long[,vars02[i]]==1 & dat_long[,vars03[i]]==1 & dat_long$sexo==0,]
+  
+  xxx<-dat_long[,c("id",vars01[i],"mvltpa_cat2","age","escolar00","grup_int2",
+                   "diabetes00","hipercol00","hta00","tobacco200","bmi00","dmed00","kcal00")]
+  names(xxx)<-c("id","variable","group","seg","escolar","grup_int",
+                "diabetes","hipercol","hta","tabaco","bmi","dmed","kcal")
+  xxx$id2<-as.factor(xxx$id)
+  xxx$seg<-as.numeric(xxx$seg)
+  xxx$dmed<-as.numeric(xxx$dmed)
+  
+  # Non-linear age is better than linear age?
+  mod_lin<-lme(variable~seg*group+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  # Is the risk factor different in the groups of MVLTPA?
+  mod_par<-lme(variable~bs(seg, df=4)+group+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  # Our model: Non-linear mixed model
+  mod_gam<-lme(variable~bs(seg, df=4)*group+escolar+grup_int
+               +diabetes+hipercol+hta+tabaco+bmi+dmed+kcal, 
+               random = ~1 | id2, 
+               correlation = corCAR1(form = ~seg | id2), 
+               control = lmeControl(opt = "nlminb", msMaxIter = 200, niterEM = 50), 
+               data=xxx,
+               method='REML',
+               na.action=na.exclude)
+  
+  pval_group<-pval_guapa(summary(mod_gam)$tTable[6,5])
+  pval_time_group<-pval_guapa(lrtest(mod_par,mod_gam)[2,5])
+  pval_nonlin_time<-pval_guapa(lrtest(mod_lin,mod_gam)[2,5])
+  
+  # Estimation of predicted values of the risk factor over time in the four non-linear equations
+  gam_predict<-expand.grid(group=factor(c(0,1)),
+                           seg=seq(60,80,by=1),
+                           id=unique(dat_long$id))
+  
+  xxx<-as.data.frame(unique(cbind(dat_long$id,dat_long$mvltpa_cat2,dat_long$escolar00,dat_long$grup_int2,
+                                  dat_long$diabetes00,dat_long$hipercol00,dat_long$hta00,dat_long$tobacco200,dat_long$bmi00,dat_long$dmed00,dat_long$kcal00)))
+  vars_needed<-c("id","group_ok","escolar","grup_int","diabetes","hipercol","hta","tabaco","bmi","dmed","kcal")
+  names(xxx)<-vars_needed
+  xxx$dmed<-as.numeric(xxx$dmed)
+  
+  gam_predict<-merge2(gam_predict,xxx,by.id=c("id"),all.x=TRUE,sort=FALSE)
+  gam_predict$group_ok<-as.numeric(gam_predict$group_ok)-1
+  gam_predict$id2<-as.factor(gam_predict$id)
+  gam_predict<-tidyr::drop_na(gam_predict, all_of(vars_needed))
+  
+  gam_predict<-gam_predict %>% 
+    mutate(fit=predict(mod_gam,gam_predict,level=0,type="response"))
+  
+  gam_predict<-gam_predict[gam_predict$group==gam_predict$group_ok,]
+  gam_predict0<-gam_predict[gam_predict$group==0,c("id","seg","fit")]
+  gam_predict1<-gam_predict[gam_predict$group==1,c("id","seg","fit")]
+  
+  group0<-NULL
+  for(j in 1:length(vars04))
+  {
+    xxx<-na.omit(gam_predict0[gam_predict0$seg==vars04[j],])
+    meanx<-mean(xxx$fit)
+    stdex<-se(xxx$fit)
+    group0<-as.data.frame(rbind(group0,cbind(as.numeric(vars04[j]),meanx,meanx-z*stdex,meanx+z*stdex)))
+  }
+  names(group0)<-c("seg","group0_fit","group0_lo","group0_hi")
+  
+  group1<-NULL
+  for(j in 1:length(vars04))
+  {
+    xxx<-na.omit(gam_predict1[gam_predict1$seg==vars04[j],])
+    meanx<-mean(xxx$fit)
+    stdex<-se(xxx$fit)
+    group1<-as.data.frame(rbind(group1,cbind(as.numeric(vars04[j]),meanx,meanx-z*stdex,meanx+z*stdex)))
+  }
+  names(group1)<-c("seg","group1_fit","group1_lo","group1_hi")
+  
+  plot.data<-merge2(group0,group1,by.id=c("seg"),all.x=TRUE,sort=FALSE)
+  figure<-ggplot(data=plot.data, aes_string(x='seg', y='group0_fit')) + 
+    geom_ribbon(aes_string(ymin='group0_lo', ymax='group0_hi'), alpha=0.25, fill="#2b2b2b") +
+    geom_line(aes_string(x='seg', y='group0_fit'), color='#2b2b2b') + 
+    geom_ribbon(aes_string(ymin='group1_lo', ymax='group1_hi'), alpha=0.25, fill="#0072B2") +
+    geom_line(aes_string(x='seg', y='group1_fit'), color='#0072B2') +
+    theme_bw() +
+    scale_x_continuous(expand = expansion(mult = c(0, 0.005))) +
+    labs(x=c("Follow-up time (years)"),y=vars00[i]) +
+    theme(axis.title.x = element_text(vjust=0.5, size=18, face="bold"), 
+          axis.title.y = element_text(vjust=0.5, size=18, face="bold"),
+          axis.text.x = element_text(size=16, colour = 'black'),
+          axis.text.y = element_text(size=16, colour = 'black'),
+          axis.ticks.x = element_line(colour = 'black'),
+          axis.ticks.y = element_line(colour = 'black'),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          axis.text.y.right = element_blank(),
+          axis.ticks.y.right = element_blank())
+  
+  namefile<-paste("./Outputs2/",vars01[i],"/Repeated/",vars01[i],"_cond_men.jpg",sep="")
+  ggsave(filename=namefile,dpi=1200)
+  par(las=1,cex=1.2,mar=c(6,6,2,0),bty="n",lheight=0.9)
+  figure
+  dev.off()
+  
+  gam_predictx<-spread(gam_predict[gam_predict$seg==60 | gam_predict$seg==65 | gam_predict$seg==70 | gam_predict$seg==75 | gam_predict$seg==80,
+                                   c("id","seg","fit","group")], seg, fit)
+  names(gam_predictx)<-c("id","group","v60","v65","v70","v75","v80")
+  
+  mod60<-lm(v60~as.factor(group),data=gam_predictx)
+  mod65<-lm(v65~as.factor(group),data=gam_predictx)
+  mod70<-lm(v70~as.factor(group),data=gam_predictx)
+  mod75<-lm(v75~as.factor(group),data=gam_predictx)
+  mod80<-lm(v80~as.factor(group),data=gam_predictx)
+  mod85<-NA
+  
+  class_g1<-c(">100 vs. <100")
+  beta60_g1<-intervals(mod60)[2,1]
+  lo60_g1<-intervals(mod60)[2,2]
+  hi60_g1<-intervals(mod60)[2,3]
+  coef60_g1<-ic_guapa2(guapa(beta60_g1),guapa(lo60_g1),guapa(hi60_g1))
+  pval60_g1<-pval_guapa(intervals(mod60)[2,4])
+  beta65_g1<-intervals(mod65)[2,1]
+  lo65_g1<-intervals(mod65)[2,2]
+  hi65_g1<-intervals(mod65)[2,3]
+  coef65_g1<-ic_guapa2(guapa(beta65_g1),guapa(lo65_g1),guapa(hi65_g1))
+  pval65_g1<-pval_guapa(intervals(mod65)[2,4])
+  beta70_g1<-intervals(mod70)[2,1]
+  lo70_g1<-intervals(mod70)[2,2]
+  hi70_g1<-intervals(mod70)[2,3]
+  coef70_g1<-ic_guapa2(guapa(beta70_g1),guapa(lo70_g1),guapa(hi70_g1))
+  pval70_g1<-pval_guapa(intervals(mod70)[2,4])
+  beta75_g1<-intervals(mod75)[2,1]
+  lo75_g1<-intervals(mod75)[2,2]
+  hi75_g1<-intervals(mod75)[2,3]
+  coef75_g1<-ic_guapa2(guapa(beta75_g1),guapa(lo75_g1),guapa(hi75_g1))
+  pval75_g1<-pval_guapa(intervals(mod75)[2,4])
+  beta80_g1<-intervals(mod80)[2,1]
+  lo80_g1<-intervals(mod80)[2,2]
+  hi80_g1<-intervals(mod80)[2,3]
+  coef80_g1<-ic_guapa2(guapa(beta80_g1),guapa(lo80_g1),guapa(hi80_g1))
+  pval80_g1<-pval_guapa(intervals(mod80)[2,4])
+  beta85_g1<-NA
+  lo85_g1<-NA
+  hi85_g1<-NA
+  coef85_g1<-NA
+  pval85_g1<-NA
+  
+  plot.data <- plot.data %>%
+    filter(seg >= 70) %>%
+    select(seg, group0_fit, group1_fit)
+  slope70_80_g0<-beta_se_ic_guapa2(summary(lm(group0_fit~seg,data=plot.data))$coef[2,1],summary(lm(group0_fit~seg,data=plot.data))$coef[2,2])
+  slope70_80_g1<-beta_se_ic_guapa2(summary(lm(group1_fit~seg,data=plot.data))$coef[2,1],summary(lm(group1_fit~seg,data=plot.data))$coef[2,2])
+  
+  tab8<-rbind(tab8,cbind(class_g1,beta60_g1,lo60_g1,hi60_g1,beta65_g1,lo65_g1,hi65_g1,
+                         beta70_g1,lo70_g1,hi70_g1,beta75_g1,lo75_g1,hi75_g1,beta80_g1,lo80_g1,hi80_g1,beta85_g1,lo85_g1,hi85_g1))
+  tab2<-rbind(tab2,cbind(class_g1,pval_group,pval_time_group,pval_nonlin_time,coef60_g1,pval60_g1,coef65_g1,pval65_g1,
+                         coef70_g1,pval70_g1,coef75_g1,pval75_g1,coef80_g1,pval80_g1,coef85_g1,pval85_g1))
+  tab3<-rbind(tab3,cbind(slope70_80_g0,slope70_80_g1))
+  
+  
+  rownames(tab1)<-c(vars0x[i])
+  rownames(tab2)<-c("all","women","men","cond_all","cond_women","cond_men")
+  rownames(tab3)<-c("all","women","men","cond_all","cond_women","cond_men")
+  rownames(tab4)<-c(vars0x[i])
+  rownames(tab5)<-c(vars0x[i])
+  rownames(tab6)<-c(vars0x[i])
+  rownames(tab7)<-c(vars0x[i])
+  rownames(tab8)<-c(vars0x[i])
+  
+  namefile<-paste("./Outputs2/",vars01[i],"/Repeated/forestplots_all.csv",sep="")
+  write.table(tab1,file=namefile,sep=";",col.names=NA)
+  namefile<-paste("./Outputs2/",vars01[i],"/Repeated/repeated.csv",sep="")
+  write.table(tab2,file=namefile,sep=";",col.names=NA)
+  namefile<-paste("./Outputs2/",vars01[i],"/Repeated/slopes.csv",sep="")
+  write.table(tab3,file=namefile,sep=";",col.names=NA)
+  namefile<-paste("./Outputs2/",vars01[i],"/Repeated/forestplots_women.csv",sep="")
+  write.table(tab4,file=namefile,sep=";",col.names=NA)
+  namefile<-paste("./Outputs2/",vars01[i],"/Repeated/forestplots_men.csv",sep="")
+  write.table(tab5,file=namefile,sep=";",col.names=NA)
+  namefile<-paste("./Outputs2/",vars01[i],"/Repeated/forestplots_cond_all.csv",sep="")
+  write.table(tab6,file=namefile,sep=";",col.names=NA)
+  namefile<-paste("./Outputs2/",vars01[i],"/Repeated/forestplots_cond_women.csv",sep="")
+  write.table(tab7,file=namefile,sep=";",col.names=NA)
+  namefile<-paste("./Outputs2/",vars01[i],"/Repeated/forestplots_cond_men.csv",sep="")
+  write.table(tab8,file=namefile,sep=";",col.names=NA)
+}
+
+
 ########################
 ### OTHER BIOMARKERS ###
 ########################
 
-vars00<-c("Estimated glomerular filtration rate, mL/min·1.73 m²\n(predicted values, 95% CI)",
-          "Neutrophil-to-lymphocyte ratio\n(predicted values, 95% CI)",
+vars00<-c("Neutrophil-to-lymphocyte ratio\n(predicted values, 95% CI)",
           "Platelets, 10⁹/L\n(predicted values, 95% CI)")
-vars0x<-c("eGFR (mL/min·1.73 m²)","N-L ratio (mg/dL)","Platelets (10⁹/L)")
-vars01<-c("egfr","nlr","plat")
-vars02<-c("egfr_ok","nlr_ok","plat_ok")
-vars03<-c("ckd_00","nlr_median00","plat_median00")
+vars0x<-c("N-L ratio (mg/dL)","Platelets (10⁹/L)")
+vars01<-c("nlr","plat")
+vars02<-c("nlr_ok","plat_ok")
+vars03<-c("nlr_median00","plat_median00")
 
 vars04<-c("60","61","62","63","64",
           "65","66","67","68","69","70","71","72","73","74",
@@ -9440,7 +10761,6 @@ for(i in 1:length(vars01))
   namefile<-paste("./Outputs2/",vars01[i],"/Repeated/forestplots_cond_men.csv",sep="")
   write.table(tab8,file=namefile,sep=";",col.names=NA)
 }
-
 
 
 ### FOREST PLOTS OF DIFFERENCES IN PREDICTED MEANS ###
@@ -11600,4 +12920,3 @@ for(i in 1:length(vars01))
   namefile<-paste("./Outputs2/",vars00[i],"/Survival/splineforestplot_",vars01[i],".csv",sep="")
   write.table(tab,file=namefile,sep=";",col.names=NA)
 }
-
