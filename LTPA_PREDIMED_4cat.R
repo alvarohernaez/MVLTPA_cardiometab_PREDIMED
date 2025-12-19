@@ -15375,7 +15375,7 @@ vars00<-c("Neutrophil-to-lymphocyte ratio\n(predicted values, 95% CI)",
 vars0x<-c("N-L ratio (mg/dL)","Platelets (10⁹/L)")
 vars01<-c("nlr","plat")
 vars02<-c("nlr_ok","plat_ok")
-vars03<-c("nlr_median00","plat_median00")
+vars03<-c("nlr_hi_00","plat_median00")
 
 vars04<-c("60","61","62","63","64",
           "65","66","67","68","69","70","71","72","73","74",
