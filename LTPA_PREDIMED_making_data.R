@@ -794,7 +794,7 @@ for(i in 1:length(vars01))
   dat[,vars02[i]]<-with(dat,ifelse(dat[,vars01[i]]<60,1,0))
 }
 
-# NLR >=3: high NLR is a CVD (https://pubmed.ncbi.nlm.nih.gov/24681815/) and cancer risk factor (https://pubmed.ncbi.nlm.nih.gov/24875653/)
+# NLR >=2.15: high NLR is a CVD (https://pubmed.ncbi.nlm.nih.gov/24681815/) and cancer risk factor (https://pubmed.ncbi.nlm.nih.gov/24875653/)
 
 vars01<-c("nlr00","nlr01","nlr02","nlr03","nlr04","nlr05","nlr06","nlr07","nlr08")
 vars02<-c("nlr_hi_00","nlr_hi_01","nlr_hi_02","nlr_hi_03","nlr_hi_04","nlr_hi_05","nlr_hi_06","nlr_hi_07","nlr_hi_08")
@@ -1024,15 +1024,15 @@ dat$okseg08_left<-with(dat,ifelse((okseg08==1 & okseg07==1),7,
 
 vars01<-c("f_ultcontact","f_ultcontact_bmi","f_ultcontact_wc","f_ultcontact_sbp","f_ultcontact_dbp",
           "f_ultcontact_ldlc","f_ultcontact_hdlc","f_ultcontact_tg","f_ultcontact_gluco","f_ultcontact_hb1ac",
-          "f_ultcontact_egfr","f_ultcontact_nlr","f_ultcontact_plat","f_ultcontact_drugs")
-vars02<-c("seg08","bmi08","wc08","sbp08","dbp08","ldlc08","hdlc08","tg08","gluco08","hb1ac08","egfr08","nlr08","plat08","f_hta08")
-vars03<-c("seg07","bmi07","wc07","sbp07","dbp07","ldlc07","hdlc07","tg07","gluco07","hb1ac07","egfr07","nlr07","plat07","f_hta07")
-vars04<-c("seg06","bmi06","wc06","sbp06","dbp06","ldlc06","hdlc06","tg06","gluco06","hb1ac06","egfr06","nlr06","plat06","f_hta06")
-vars05<-c("seg05","bmi05","wc05","sbp05","dbp05","ldlc05","hdlc05","tg05","gluco05","hb1ac05","egfr05","nlr05","plat05","f_hta05")
-vars06<-c("seg04","bmi04","wc04","sbp04","dbp04","ldlc04","hdlc04","tg04","gluco04","hb1ac04","egfr04","nlr04","plat04","f_hta04")
-vars07<-c("seg03","bmi03","wc03","sbp03","dbp03","ldlc03","hdlc03","tg03","gluco03","hb1ac03","egfr03","nlr03","plat03","f_hta03")
-vars08<-c("seg02","bmi02","wc02","sbp02","dbp02","ldlc02","hdlc02","tg02","gluco02","hb1ac02","egfr02","nlr02","plat02","f_hta02")
-vars09<-c("seg01","bmi01","wc01","sbp01","dbp01","ldlc01","hdlc01","tg01","gluco01","hb1ac01","egfr01","nlr01","plat01","f_hta01")
+          "f_ultcontact_egfr","f_ultcontact_nlr","f_ultcontact_plat","f_ultcontact_drugs","f_ultcontact_lipids")
+vars02<-c("seg08","bmi08","wc08","sbp08","dbp08","ldlc08","hdlc08","tg08","gluco08","hb1ac08","egfr08","nlr08","plat08","f_hta08","ldlc_hdlc08")
+vars03<-c("seg07","bmi07","wc07","sbp07","dbp07","ldlc07","hdlc07","tg07","gluco07","hb1ac07","egfr07","nlr07","plat07","f_hta07","ldlc_hdlc07")
+vars04<-c("seg06","bmi06","wc06","sbp06","dbp06","ldlc06","hdlc06","tg06","gluco06","hb1ac06","egfr06","nlr06","plat06","f_hta06","ldlc_hdlc06")
+vars05<-c("seg05","bmi05","wc05","sbp05","dbp05","ldlc05","hdlc05","tg05","gluco05","hb1ac05","egfr05","nlr05","plat05","f_hta05","ldlc_hdlc05")
+vars06<-c("seg04","bmi04","wc04","sbp04","dbp04","ldlc04","hdlc04","tg04","gluco04","hb1ac04","egfr04","nlr04","plat04","f_hta04","ldlc_hdlc04")
+vars07<-c("seg03","bmi03","wc03","sbp03","dbp03","ldlc03","hdlc03","tg03","gluco03","hb1ac03","egfr03","nlr03","plat03","f_hta03","ldlc_hdlc03")
+vars08<-c("seg02","bmi02","wc02","sbp02","dbp02","ldlc02","hdlc02","tg02","gluco02","hb1ac02","egfr02","nlr02","plat02","f_hta02","ldlc_hdlc02")
+vars09<-c("seg01","bmi01","wc01","sbp01","dbp01","ldlc01","hdlc01","tg01","gluco01","hb1ac01","egfr01","nlr01","plat01","f_hta01","ldlc_hdlc01")
 date_cols<-c("seg08","seg07","seg06","seg05","seg04","seg03","seg02","seg01")
 
 for (i in seq_along(vars01)) {
@@ -1349,7 +1349,6 @@ colnames(dat_long)<-c("id","sexo","nodo","escolar00","grup_int","grup_int2","idc
                       "gluco_basal","hb1ac_basal","egfr_basal","nlr_basal","plat_basal",
                       "seg","bmi","wc","whtr","sbp","dbp","tc","hdlc","ldlc","ldlc_hdlc","tg","gluco","hb1ac","egfr","nlr","plat","age")
 dat_long <- dat_long %>% arrange(id, as.numeric(seg))
+dat_long[c("mvltpa_cat2","mvltpa_cat4")]<-lapply(dat_long[c("mvltpa_cat2","mvltpa_cat4")],function(x) as.factor(x))
 
 save(dat_long,file="./Data/LTPA_PREDIMED2_long.RData")
-
-
